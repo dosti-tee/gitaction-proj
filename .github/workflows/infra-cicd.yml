@@ -24,7 +24,7 @@ jobs:
 
     - name: Google credentials
       run: |
-        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
+        echo -n "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
         ls
         cat credentials.json
 
