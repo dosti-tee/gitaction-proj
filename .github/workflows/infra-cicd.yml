@@ -25,8 +25,9 @@ jobs:
     - name: Google credentials
       run: |
         GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        echo -n $GOOGLE_APPLICATION_CREDENTIALS > credentials.json
+        echo -n "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
         ls
+        cat credentials.json
 
     - name: Setup Terraform
       run: |
