@@ -19,37 +19,32 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - id: auth
+    - name: Google Authenticate
       uses: google-github-actions/auth@v0.4.0
       with:
         credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.2.1
+      with:
+        version: latest
 
     - name: Use gcloud CLI
       run: |
         gcloud config list
-        gcloud compute networks list
-
-    - name: Google credentials
-      run: |
-        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | tee credentials.json >/dev/null
-        ls
-        cat credentials.json
 
     - name: Setup Terraform
       run: |
         sudo apt install wget curl unzip
         wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
         unzip terraform_0.14.7_linux_amd64.zip && chmod +x terraform
-        ls -l
 
     - name: Terraform Init
       run: ./terraform init
 
     - name: Terraform Format
-      run: ./terraform fmt -check
+      run: |
+        ./terraform fmt -check || echo "terraform scrips not well formatted"
 
     - name: Terraform Plan
       run: ./terraform plan
