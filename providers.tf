@@ -1,7 +1,7 @@
 provider "google" {
   project     = var.project_id
   region      = var.region
-  credentials = "credentials.json"
+  # credentials = "credentials.json"
 }
 
 # provider "random" {
