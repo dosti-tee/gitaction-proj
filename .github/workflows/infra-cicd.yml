@@ -49,7 +49,7 @@ jobs:
 
     - name: Terraform Format
       run: |
-        terraform fmt -check || echo "terraform scrips not well formatted"
+        terraform fmt -check; echo "terraform scrips not well formatted"
 
     - name: Terraform Plan
       run: terraform plan
