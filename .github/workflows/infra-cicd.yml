@@ -25,11 +25,17 @@ jobs:
     - name: Google credentials
       run: |
         echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
+        ls
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.14.7
+    
+    - name: Debugging
+      run: |
+        ls
+        ls /usr/local/bin | grep -i terraform
 
     - name: Terraform Init
       run: terraform init
