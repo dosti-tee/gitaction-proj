@@ -1,4 +1,4 @@
-# gitaction-proj
+# Terraform GCP with GitAction
 Demo use of Github actions with Coogle cloud and Terraform
 
 To use use this script, create a secret with key GOOGLE_CREDENTIALS.
