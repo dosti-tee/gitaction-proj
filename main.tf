@@ -11,13 +11,13 @@ resource "google_compute_subnetwork" "vpc-subnetwork" {
 }
 
 resource "google_compute_firewall" "firewall-allow" {
-  name = "gitaction-allow-http"
-  network = google_compute_network.vpc_network.name
-  source_ranges = [ "0.0.0.0/0" ]
+  name          = "gitaction-allow-http"
+  network       = google_compute_network.vpc_network.name
+  source_ranges = ["0.0.0.0/0"]
 
   allow {
-      protocol = "tcp"
-      ports = ["22","80","8080"]
+    protocol = "tcp"
+    ports    = ["22", "80", "8080"]
   }
 }
 
@@ -27,17 +27,17 @@ resource "google_compute_instance" "first-instance" {
   machine_type = "f1-micro"
 
   boot_disk {
-      initialize_params {
-          image = "debian-cloud/debian-9"
-          size = "50"
-      }
+    initialize_params {
+      image = "debian-cloud/debian-9"
+      size  = "50"
+    }
   }
 
   network_interface {
-      network = google_compute_network.vpc_network.name
-      subnetwork = google_compute_subnetwork.vpc-subnetwork.name
-      access_config {
-      }
+    network    = google_compute_network.vpc_network.name
+    subnetwork = google_compute_subnetwork.vpc-subnetwork.name
+    access_config {
+    }
   }
 
   metadata_startup_script = "apt-get update && apt install -yq apache2"

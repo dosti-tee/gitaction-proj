@@ -19,6 +19,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Google credentials
+      run: |
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > credentials.json
+
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
