@@ -26,7 +26,6 @@ jobs:
       run: |
         echo ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }} > credentials.json
         ls && cat credentials.json
-        gcloud auth activate-service-account terraform@adeolu-tee.iam.gserviceaccount.com --key-file=credentials.json
 
     - name: Setup Terraform
       run: |
