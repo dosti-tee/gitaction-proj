@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "tf-state-adeolutee"
+    bucket = "<TF_STATE_BUCKET>"
     prefix = "state"
   }
 }

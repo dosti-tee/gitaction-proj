@@ -1,2 +1,2 @@
-project_id = "adeolu-tee"
-region     = "europe-west1"
+project_id = "<YOUR_PROJECT_ID>"
+region     = "<YOUR_REGION>"
