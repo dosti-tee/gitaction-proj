@@ -22,7 +22,7 @@ jobs:
     - name: Google credentials
       run: |
         export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        echo -n "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
+        echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
         ls
         cat credentials.json
 
