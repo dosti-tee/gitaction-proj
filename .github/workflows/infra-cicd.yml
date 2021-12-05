@@ -28,7 +28,9 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0.2.1
 
     - name: Use gcloud CLI
-      run: gcloud config list
+      run: |
+        gcloud config list
+        gcloud compute networks list
 
     - name: Google credentials
       run: |
