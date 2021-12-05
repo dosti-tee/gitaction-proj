@@ -31,11 +31,15 @@ jobs:
       run: |
         gcloud config list
 
+    # - name: Setup Terraform
+    #   run: |
+    #     sudo apt install wget curl unzip
+    #     wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
+    #     unzip terraform_0.14.7_linux_amd64.zip && chmod +x terraform
     - name: Setup Terraform
-      run: |
-        sudo apt install wget curl unzip
-        wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
-        unzip terraform_0.14.7_linux_amd64.zip && chmod +x terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.14.7
 
     - name: Terraform Init
       run: ./terraform init
