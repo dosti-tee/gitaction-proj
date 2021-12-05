@@ -1,4 +1,4 @@
-name: 'Terraform gitactions'
+name: 'Terraform GitActions'
 
 on:
   push:
@@ -31,30 +31,32 @@ jobs:
       run: |
         gcloud config list
 
+  # Optional step to obtain terraform binary
     # - name: Setup Terraform
     #   run: |
     #     sudo apt install wget curl unzip
     #     wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
     #     unzip terraform_0.14.7_linux_amd64.zip && chmod +x terraform
+
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.14.7
 
     - name: Terraform Init
-      run: ./terraform init
+      run: terraform init
 
     - name: Terraform Format
       run: |
-        ./terraform fmt -check || echo "terraform scrips not well formatted"
+        terraform fmt -check || echo "terraform scrips not well formatted"
 
     - name: Terraform Plan
-      run: ./terraform plan
+      run: terraform plan
 
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: ./terraform apply -auto-approve
+      run: terraform apply -auto-approve
 
     - name: Terraform Destroy
       if: ${{ false }}
-      run: ./terraform destroy -auto-approve
+      run: terraform destroy -auto-approve
