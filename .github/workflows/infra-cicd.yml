@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
-    defaults:
-      run:
-        shell: bash
 
     steps:
     - name: Checkout
@@ -24,7 +21,7 @@ jobs:
 
     - name: Google credentials
       run: |
-        GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         echo -n "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
         ls
         cat credentials.json
